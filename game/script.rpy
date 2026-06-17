@@ -4,48 +4,76 @@
 # name of the character.
 
 define y = Character("Isabelle", color="#b193bf")
-define mom = Character("Mother")
+define f = Character("unnamed friend")
+
 
 
 # The game starts here.
 
 label start:
 
-    scene bg room
+    f "Come on! We don't have all day."
+    y "I'm coming!"
 
-   "It's a warm summer day. You're outside, reading a book on a picnic blanket."
+    "It's a warm summer day. Your friend has dragged you along on a hike."
 
-    mom "Isabelle! I'm bringing you some cookies."
+    y "Where are we even going again?"
+    f "The peak of the mountain has an AMAZING view of the waterfall!"
 
-    y "Yay! Cookies!"
-
-    mom "Do you want me to bring some juice as well? It's hot out, it'll be refreshing."
+    "It's been five hours. You have no idea how friend has so much stamina, because you're exhausted."
 
     menu:
-        "Apple juice, please!"
-            jump apple
-        "I'll come in and get it!"
-            jump inside
+        "can we take a break or something? im so tired":
+            $tired = True
+            jump break
+        "Let's keep going":
+            jump continue
+    
+    label continue:
+        f "ok, whatever you say..."
+        "You're still lagging behind, but you continue with renewed resolve."
 
-    label apple:
-        mom "Ok!"
-    jump inside:
-        mom "While you're at it, can you tell your sister to come inside too?"
-        "You get up and start walking towards the front door. Oblivious to your surroundings, you trip on a rock."
-        y "Oww...."
-        "While you're on the floor, you notice something poking out from behind a tree."
+    label break:
+        f "luckily I brought some snacks!"
+        $honesty +=1
+        "a few minutes later..."
+        f "let's get going again!"
 
-    # This shows a character sprite. A placeholder is used, but you can
-    # replace it by adding a file named "eileen happy.png" to the images
-    # directory.
+    "You keep walking."
 
-    show eileen happy
+    if tired:
+        "Your legs are starting to feel like jelly with how long you've been walking."
+        y "Seriously, how do you do this?"
+        f "Years of practice. Hey, watch out---!"
+        "You spectacularly trip over a rock and fall flat on your face."
+        f "Hey! Hey! Are you ok? Look at me! Say something? Hello?"
+    
+    else:
+        y "Hey, this isn't so bad."
+        f "Watch you jinx yourself or something."
+        y "What do you mean--"
+        f "lol i'm just messing with you!"
+        "You keep walking, when you suddenly hear a faint rumbling noise."
+        f "Do you hear that?"
+        y "Yeah--"
+        "On the edge of the trail, the ground starts giving underneath you."
+        f "ISABELLE--"
+        "You try to jump over, but it seems like your movement made it worse. You start slipping uncontrollably down the side of the mountain."
+        f "GRAB ONTO SOMETHING!"
+        "It's too late. You can only wonder when you'll hit the ground now."
+        "THUD!"
+        "There's dust everywhere. You try to get up, but your head starts pounding. You decide to lie back down, and close your eyes for just a second..."
 
-    # These display lines of dialogue.
+    
+    
 
-    e "You've created a new Ren'Py game."
+        
 
-    e "Once you add a story, pictures, and music, you can release it to the world!"
+
+
+
+
+
 
     # This ends the game.
 
