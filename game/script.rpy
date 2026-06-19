@@ -140,6 +140,15 @@ label start:
     label sacrificecoin:
 
     label manwholostname:
+        y "Who are you?"
+        mystery "That's a good question. She's a smart one, isn't she?"
+        mystery "My name is..."
+        mystery "Oh yeah! I lost it."
+        y "You lost...your name?"
+        d "It's complicated."
+        mystery "That's why they call me, The Man Who Lost His Name!"
+        y "That's a bit of a mouthful, though, don't you think?"
+        m "Well, do you have a better idea? And besides, it has a nice ring to it."
 
     label fish:
         d "We've arrived at the lake, home to the fish!"
@@ -173,25 +182,52 @@ label start:
 
 
 
-    label save2:
-
-    label sacrifice2:
-
     label meetdancer:
 
-    label death3:
+    label savedancer:
+
+    label sacrificedancer:
+
+    label crossroads:
+
+    label savedottie:
+
+    label sacrificedottie:
 
     label chooserank:
+        m "Well, clearly we don't have much time left."
+        m "Our army needs its leader. Someoe who isn't afraid to take charge and fight."
+        if corpses>2
+            m "And considering that all my friends are dead, I guess you're the only one left."
+        else
+            m "And clearly you've proven yourself to be capable."
+        m "So, what do you say? Are you up to the task you came here to fulfill?"
+        y "You guys need to stop saying that. And..."
+        menu:
+            "I would be honored.":
+                jump general
+            "I'm not sure if I'm ready yet."
+                jump footman
+            "Who said I would join you?" if corpses>2
+                jump evil
 
     label general:
 
     label footman:
 
     label evil:
-
+        m "...what do you mean?"
     label confrontation:
 
     label battle:
+
+    menu: #this is for testing endings, this will NOT be in the final version!!!
+        "good things happen to good people":
+            jump goodthingsgoodpeople
+        "death is a mercy":
+            jump deathisamercy
+        "void dominion":
+            jump voidDominion
 
 
 
@@ -217,6 +253,7 @@ label start:
         y "Hey!"
         "What? You know it's true."
         "Seeing as you can still hear that disembodied voice--Hey!"
+        jump theend
 
     label deathisamercy:
         mystery "Oh, so it's you..."
@@ -241,11 +278,20 @@ label start:
         "You are not of course the only victim. Even the text box that “Narrated” your journey falls victim to the encroaching VOID. Perhaps you find solace in this."
         "All “I” can say is this seems to be a moment to rejoice! “Our” murderer seems to be dying the same way they killed “us”.
         "Your “END” is Oblivion."
+        jump theend
+
+    label voidDominion:
+        mystery "You have made a wise decision."
+        y "I know."
+        "The VOID QUEEN reveals herself from the shadows, a glistening scepter in hand."
+        v "You have proven yourself to me, you know. You're capable. Powerful. Ruthless."
+        v "Just what I look for in a right hand."
+        v "Join me, and we shall conquer universes...together."
 
 
 
 
     
     # This ends the game.
-
-    return
+    label theend
+        return
