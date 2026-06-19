@@ -7,6 +7,9 @@ define c = Character("Coinflip")
 define v = Character("Void Queen")
 define b = Character("Bird")
 define mystery = Character("???")
+define m = Character("Man Who Lost His Name")
+define of = Character("Orange Fish")
+define bf = Character("Blue Fish")
 
 # The game starts
 label start:
@@ -98,6 +101,10 @@ label start:
         c "I know, right! Sometimes I think this place is too good to be true. Except for the Void Queen, of course. But it's totally real."
         d "Stop overwhelming her! Sorry about...her. Anyways, I'm Dottie, and this is Coinflip. What she's TRYING to ask is, are you the General?"
         y "I have no idea who that is. But good luck finding them, I guess?"
+        c "See, that's where you're mistaken. You ARE the General, obviously."
+        y "...how?"
+        d "What I think she's trying to say is that you fit the profile we were given."
+        c "So...do you know anything about stopping world-destroying entities?"
         jump meetvoid
         
 
@@ -120,9 +127,75 @@ label start:
         y "Wait, did you say CALVIN COOLIDGE?"
         d "You asked who the president is right now!"
         y "I think if I think about this any more my brain is going to explode."
+        y "Wait, what was that...situation you mentioned earlier? The one I supposedly already know about?"
+        c "There's only one situation I COULD be talking about."
+
         jump meetvoid
 
+
     label meetvoid:
+
+    label savecoin:
+
+    label sacrificecoin:
+
+    label manwholostname:
+
+    label fish:
+        d "We've arrived at the lake, home to the fish!"
+        y "Aww, they're kind of cute!"
+        m "It's customary for a potential leader to be tested by the fish."
+        y "Wait, huh?"
+        bf "One of us tells the truth..."
+        of "And one of us lies."
+        "Which fish do you trust?"
+        menu:
+            "The orange fish.":
+                jump orange
+            "The blue fish.":
+                jump blue
+
+    label orange:
+        $ benevolence +=5
+        bf "I'm the one that tells LIES!"
+        of "Congratulations, your judgment rings true!"
+        of "Also, you weren't supposed to tell her that."
+        m "You were right! She IS some sort of miracle!"
+
+    label blue:
+        bf "You are CORRECT!"
+        of "He's lying."
+        y "What...?"
+        $ confusion +=5
+        d "It's okay, you don't have to worry about them. The blue fish tells lies."
+        m "Don't feel bad about getting it wwrong. They get in your head like that."
+        d "That's why any future leader would have advisors! Like us!"
+
+
+
+    label save2:
+
+    label sacrifice2:
+
+    label meetdancer:
+
+    label death3:
+
+    label chooserank:
+
+    label general:
+
+    label footman:
+
+    label evil:
+
+    label confrontation:
+
+    label battle:
+
+
+
+
 
 
     label goodthingsgoodpeople:
