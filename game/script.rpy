@@ -19,13 +19,13 @@ label start:
     $ corpses = 0 #unlocks evil route a la undertale
     $ insanity = 0 #how willing you are to stay
     $ benevolence = 0 #your leadership capability
-    $ confusion = 0
+    $ confusion = 0 
 
-    "It's a warm spring day. You and your friend are walking in the city to _____."
+    "It's a warm spring day. You and your friend are walking in the city, but now you're hungry."
 
     f "So, where do we want to head for lunch? I was thinking of this sushi place that I've been wanting to try out."
 
-    y "Ooh! Sounds yummy. How long is the walk?"
+    y "Ooh! Sounds delicious. How long is the walk?"
     f "It looks like if we take the route to the left it'll be faster, but more traffic. If we go to the right it'll be longer but calmer."
     y "Well which way do you want to go?"
     f "I don't know, that's why I'm asking you!"
@@ -42,14 +42,20 @@ label start:
         "In your excitement, you didn't see that the walk sign hadn't turned on yet."
         f "WAIT--"
         "THUD!"
+        "Everything goes black."
         $ insanity+=1
         jump forest
 
     label right:
         f "Fair choice. This way passes through a less busy intersection."
         y "Ok, cool! Let's get going then."
-        f "Oh ew, it's one of those crazy e-bike kids. Slow down! No, actually, SLOW DOWN--"
-        "Some middle schooler looking for an adrenaline rush decided to go 20 miles per hour on a sidewalk. Unfortunately, he wasn't paying attention to where he was going--right into you."
+        f "Come on! The crossing is open now."
+        "You've only taken a few steps before the ground begins to rumble."
+        f "What is THAT?"
+        "A crack in the road appears beneath your feet."
+        f "Why aren't you moving? GET AWAY FROM THAT THING!"
+        y "I'm TRYING!"
+        "You try to jump away but it's too late. The crack widens to a gaping hole...pulling you into the newly opened abyss."
         jump forest
     
 
@@ -83,9 +89,10 @@ label start:
             jump dottie
 
     label dottie:
-        show dottie happy
+        show dottie happy at right
         d "She awakens!"
         y "Who...awakens?"
+        show coinflip side at left
         c "I thought she was going to be taller, if I'm being honest."
         d "Well, beggars can't be choosers. I guess we'll have to make do with what we got."
         menu:
@@ -100,11 +107,12 @@ label start:
         d "Coinflip! Stop being so rude! I apologize on my friend's behalf."
         y "This has got to be some sort of dream."
         c "I know, right! Sometimes I think this place is too good to be true. Except for the Void Queen, of course. But it's totally real."
-        d "Stop overwhelming her! Sorry about...her. Anyways, I'm Dottie, and this is Coinflip. What she's TRYING to ask is, are you the General?"
+        d "Stop overwhelming her! Sorry about...her. Anyways, I'm Dottie, and this is Coinflip. What he's TRYING to ask is, are you the General?"
         y "I have no idea who that is. But good luck finding them, I guess?"
         c "See, that's where you're mistaken. You ARE the General, obviously."
         y "...how?"
-        d "What I think she's trying to say is that you fit the profile we were given."
+        d "What I think he's trying to say is that you fit the profile we were given."
+        show coinflip concern at left
         c "So...do you know anything about stopping world-destroying entities?"
         jump meetvoid
         
@@ -137,8 +145,19 @@ label start:
     label meetvoid:
 
     label savecoin:
+        $ benevolence += 5
 
     label sacrificecoin:
+        hide dottie
+        show coinflip at center
+        c "It's okay, kid. Sometimes, you gotta make the hard decisions. It's war, what did you expect?"
+        show coinflip death1
+        c "At least I know it's not going to be for nothing. I was honored to be of service."
+        "You feel a tinge of remorse having to send Coinflip to this fate, but like he said, war calls for difficult choices."
+        show coinflip death2
+        c "I know you'll do the right thing when the time calls for it."
+        show coinflip rust
+        "There's nothing left to do now but keep moving."
         $ corpses +=1
 
     label manwholostname:
@@ -176,6 +195,7 @@ label start:
         of "Congratulations, your judgment rings true!"
         of "Also, you weren't supposed to tell her that."
         m "You were right! She IS some sort of miracle!"
+        jump voidlake
 
     label blue:
         bf "You are CORRECT!"
@@ -185,7 +205,68 @@ label start:
         d "It's okay, you don't have to worry about them. The blue fish tells lies."
         m "Don't feel bad about getting it wwrong. They get in your head like that."
         d "That's why any future leader would have advisors! Like us!"
+        jump voidlake
 
+    label voidlake:
+        of "Hey Blue, do you...see that?"
+        bf "I don't see anything at all. Nothing whatsoever!"
+        of "Oh, great."
+        of "Hey, Dottie? I think you're going to want to have a look at this."  
+        "You and the group look to the lake's opposite shore, where the sand has started turning grey."
+        d "How is it already here? I didn't think it would catch up to us this fast."
+        m "Now's probably a good time to skedaddle before we all become void toast."
+        d "But what about the fish?"
+        m "What about them?"
+        d "We can't just LEAVE them here!"
+        m "Uhh, yeah we can. None of this will mean ANYTHING if we don't survive."
+        menu:
+            "We have to at least try to help them.":
+                jump savefish
+            "I don't think there's anything we can do.":
+                jump sacrificefish
+
+    label savefish:
+        $benevolence +=7
+        "You scoop the orange fish up in your arms."
+        m "Well, I guess we're doing this now."
+        "The Man Who Lost His Name follows, grabbing the blue fish."
+        d "We can't keep them out of the water for too long. Over there should be a small pond where they can take shelter."
+        of "Thank you! Thank you thank you thank you!" 
+        bf "No one's ever showed us this much compassion before. Most people just think we're an annoying gimmick."
+        menu:
+            "Why does this keep happening, though?":
+                jump what
+            "She can't keep doing this, taking away your homes.":
+                jump outforblood
+
+
+    label what:
+        $confusion += 3
+        m "Maybe she's insane. Maybe she's jealous. Who knows!"
+        of "Well, we're grateful nonetheless."
+        d "That's our future General!"
+        jump meetdancer
+    
+    label outforblood:
+        m "Don't worry, you'll get your opportuntiy for revenge soon enough."
+        d "Be patient. And don't encourage her to do something irrational!"
+        y "This is only one of what, tens of places she's destroyed? Hundreds? Thousands?"
+        y "If we don't stop her, who will?"
+        $confrontation +=3
+        jump meetdancer
+
+    label sacrificefish:
+        m "Let's keep going. Sorry guys, it's nothing personal."
+        of "I've always hoped that I'd be able to go out with a bang. ENSURE OUR DEATHS WERE NOT IN VAIN, YOUNG WARRIOR!"
+        bf "You were always the melodramatic one."
+        of "Sure, sure."
+        "The darkness spreads across the surface of the lake. As it approaches the fish, you wonder if this really was the only thing you could do."
+        d "He's right, you know. You won't always be able to save everyone."
+        "You're not sure if what Dottie said is true. What if you had tried, at least?"
+        "What if, what if, what if. There are so many things that could have been changed."
+        m "I can see you dwelling on it. Now's not the time for sulking, it's time for JUSTICE!"
+        $corpses+=1
+        jump meetdancer
 
 
     label meetdancer:
