@@ -98,7 +98,7 @@ define gui.game_menu_background = "gui/game_menu.png"
 
 image gui textbox = Transform(
     "gui/textbox.png",
-    xsize=100%,
+    xsize=1920,
     ysize=278
 )
 
