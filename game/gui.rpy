@@ -60,7 +60,7 @@ define gui.interface_text_color = '#ffffff'
 define gui.text_font = "AmericanTypewriter-Semibold-04.ttf"
 
 ## The font used for character names.
-define gui.name_text_font = "DejaVuSans.ttf"
+define gui.name_text_font = "Academy-Engraved-LET-Fonts.ttf"
 
 ## The font used for out-of-game text.
 define gui.interface_text_font = "DejaVuSans.ttf"
