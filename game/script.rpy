@@ -79,7 +79,7 @@ label start:
     
 
     label forest:
-        play music opening
+        play music opening loop 
         "You open your eyes."
         scene treesup
         y "...huh?"
@@ -188,7 +188,7 @@ label start:
 
 
     label meetvoid:
-        play music battle fadein 1.0 fadeout 1.0
+        play music battle fadein 1.0 fadeout 1.0 loop
         "You hear a rustling behind you. You turn around to find the source of the noise, but it looks like nothing is there."
         hide dottie
         hide coinflip
@@ -275,7 +275,7 @@ label start:
             xalign 0.2
             yalign 0.6
         show dottie happy at right
-        play music opening fadein 1.0 fadeout 1.0
+        play music opening fadein 1.0 fadeout 1.0 loop
         c "So I guess she DOES have General potential! We need to gather the others. We might actually stand a chance now!"
         d "One of us should go and start gathering the others."
         c "I'll go do it. I think if I stay here with you, I'd be too much of a burden anyway."
@@ -310,7 +310,7 @@ label start:
         jump manwholostname
 
     label manwholostname:
-        play music water fadein 1.0 fadeout 1.0
+        play music water fadein 1.0 fadeout 1.0 loop
         scene shore at truecenter:
             zoom 1.8
         "Some time later..."
@@ -494,7 +494,7 @@ label start:
 
 
     label meetdancer:
-        play music crystalcave fadein 1.0 fadeout 1.0
+        play music crystalcave fadein 1.0 fadeout 1.0 loop
         hide noname
         scene cave at truecenter
         d "Okay, you need to be REALLY careful here. We don't want to scare her."
@@ -639,7 +639,7 @@ label start:
         jump crossroads
 
     label crossroads:
-        play music battle fadein 1.0 fadeout 1.0
+        play music battle fadein 1.0 fadeout 1.0 loop
         scene storm at truecenter:
             zoom 1.8
         show dottie sad at left
@@ -976,6 +976,7 @@ label start:
 
 
     label goodthingsgoodpeople:
+        play music opening fadein 1.0 fadeout 1.0
         scene woods at truecenter with fade
         mystery "Seems to me that it's your lucky day!"
         y "What?"
@@ -1022,8 +1023,10 @@ label start:
         m "The parents that raised you, the friends up adored, the lovers you tangle with, not a single one will know you are missing. Not a single one knows you existed at all."
         m "You will die here with no one to mourn you. Not in this world or your own." 
         "As the VOID encroaches the air seems to still. When the inky blackness reaches “The Man who Lost His Name” He turns and looks at you one last time."
+        hide noname
         "The Man Who Lost His Name disperses in a puff of black smoke."
-        "The Man Who Lost His Name blocks his forgotten memory from ———(character name)."
+        "The Man Who Lost His Name blocks his forgotten memory from you."
+        scene black
         "Two souls are left in this world. Your name becomes a blot in the history books that shall never be written."
         "As the Void comes closer you think, How beautiful. How terrible. These actions are your own and so too are the consequences. Your skin unfurls from the gore that is your flesh. Fat melts off of muscle and meat falls off bone."
         "You are not of course the only victim. Even the text box that Narrated your journey falls victim to the encroaching VOID. Perhaps you find solace in this."
