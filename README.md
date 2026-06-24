@@ -3,7 +3,7 @@ A Visual Novel for the Girls Got Game Summer Jam themed to "the void."
 
 (image.png)
 
-TRY IT HERE! (Insert Link)
+[try it here!](sleepymeep.itch.io/lunchtime)
 
 Features:
 - Custom characters
